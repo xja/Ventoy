@@ -2783,6 +2783,10 @@ static grub_err_t ventoy_cmd_list_img(grub_extcmd_context_t ctxt, int argc, char
         {
             g_img_iterator_head.dir[len++] = '/';
         }
+        if (!ventoy_is_efi_os()) /* legacy mode */
+        {
+            len += grub_snprintf(g_img_iterator_head.dir + len, sizeof(g_img_iterator_head.dir) - 1 - len, "%s", "bios/");
+        }
         g_img_iterator_head.dirlen = len;
     }
     else
