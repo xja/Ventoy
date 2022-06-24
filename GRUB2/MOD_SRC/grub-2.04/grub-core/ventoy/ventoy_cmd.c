@@ -2787,6 +2787,10 @@ static grub_err_t ventoy_cmd_list_img(grub_extcmd_context_t ctxt, int argc, char
         {
             len += grub_snprintf(g_img_iterator_head.dir + len, sizeof(g_img_iterator_head.dir) - 1 - len, "%s", "bios/");
         }
+        else /* UEFI mode */
+        {
+            len += grub_snprintf(g_img_iterator_head.dir + len, sizeof(g_img_iterator_head.dir) - 1 - len, "%s", "uefi/");
+        }
         g_img_iterator_head.dirlen = len;
     }
     else
